@@ -1,0 +1,188 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Modal Verbs – Mixed Approach</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- Responsive -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+    <style>
+      body {
+        font-family: "Segoe UI", Arial, sans-serif;
+        margin: 20px;
+        background: linear-gradient(135deg, #f0f8ff, #e6f7ff);
+        color: #333;
+      }
+      h2 {
+        color: #004080;
+        text-align: center;
+        margin-bottom: 20px;
+      }
+      h3 {
+        color: #0066cc;
+      }
+      .exercise {
+        margin-top: 20px;
+      }
+      .feedback {
+        font-weight: bold;
+        margin-top: 10px;
+      }
+      .hidden {
+        display: none;
+      }
+      button {
+        margin-top: 10px;
+        padding: 10px 20px;
+        border: none;
+        border-radius: 5px;
+        background: #0066cc;
+        color: white;
+        cursor: pointer;
+        transition: 0.3s;
+      }
+      button:hover {
+        background: #004080;
+      }
+      input[type="text"] {
+        padding: 5px;
+        border: 2px solid #0066cc;
+        border-radius: 5px;
+        margin: 5px 0;
+        width: 60%;
+        max-width: 250px;
+      }
+      ul {
+        background: #e6f2ff;
+        padding: 10px;
+        border-radius: 8px;
+      }
+      .footer {
+        margin-top: 40px;
+        padding: 15px;
+        background: #222;
+        color: white;
+        text-align: center;
+        border-radius: 8px;
+      }
+      .footer p {
+        margin-bottom: 10px;
+        font-weight: bold;
+      }
+      .footer a {
+        margin: 0 10px;
+        text-decoration: none;
+        color: white;
+        font-size: 28px;
+        transition: 0.3s;
+      }
+      .footer a:hover {
+        color: #00ccff;
+      }
+      /* Responsive */
+      @media (max-width: 600px) {
+        body {
+          margin: 10px;
+        }
+        input[type="text"] {
+          width: 100%;
+        }
+        button {
+          width: 100%;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <h2>Modal Verbs – Mixed Approach</h2>
+
+    <!-- Step 1: Observation (Inductive) -->
+    <div id="step1">
+      <h3>Step 1: Observe</h3>
+      <p>Look at these sentences:</p>
+      <ul>
+        <li>I <b>can</b> swim very well.</li>
+        <li>You <b>must</b> wear a helmet.</li>
+        <li>We <b>should</b> study more.</li>
+      </ul>
+      <p>
+        <strong>Question:</strong> What word comes before the main verb? What
+        does it express?
+      </p>
+      <input
+        type="text"
+        id="inductiveAnswer"
+        placeholder="Type your discovery here"
+      />
+      <button onclick="goToStep2()">Next → Rule</button>
+    </div>
+
+    <!-- Step 2: Rule (Deductive) -->
+    <div id="step2" class="hidden">
+      <h3>Step 2: Rule</h3>
+      <p>
+        <strong>Rule:</strong> Modal verbs (can, must, should, may, etc.) go
+        before the base form of the verb (without “to”). They express ability,
+        obligation, advice, or possibility.
+      </p>
+      <button onclick="goToStep3()">Next → Practice</button>
+    </div>
+
+    <!-- Step 3: Practice -->
+    <div id="step3" class="hidden">
+      <h3>Step 3: Practice</h3>
+      <p>Complete the sentences with the correct modal verb:</p>
+      He <input type="text" id="q1" /> drive a car. (ability)<br />
+      You <input type="text" id="q2" /> eat vegetables every day. (advice)<br />
+      Students <input type="text" id="q3" /> respect the rules. (obligation)<br />
+      <button onclick="checkMixed()">Check Answers</button>
+      <p id="result" class="feedback"></p>
+    </div>
+
+    <!-- Josbrevar07 Special Footer -->
+    <div class="footer">
+      <p>Josbrevar07 Special Footer</p>
+      <a href="https://walink.co/341b8e" target="_blank"
+        ><i class="fab fa-whatsapp"></i
+      ></a>
+      <a href="https://www.facebook.com/josue.brenesvargas" target="_blank"
+        ><i class="fab fa-facebook"></i
+      ></a>
+      <a href="https://www.instagram.com/josbrevar07/" target="_blank"
+        ><i class="fab fa-instagram"></i
+      ></a>
+      <a href="https://www.youtube.com/@josbrevar0773" target="_blank"
+        ><i class="fab fa-youtube"></i
+      ></a>
+    </div>
+
+    <script>
+      function goToStep2() {
+        document.getElementById("step1").classList.add("hidden");
+        document.getElementById("step2").classList.remove("hidden");
+      }
+      function goToStep3() {
+        document.getElementById("step2").classList.add("hidden");
+        document.getElementById("step3").classList.remove("hidden");
+      }
+      function checkMixed() {
+        let a1 = document.getElementById("q1").value.trim().toLowerCase();
+        let a2 = document.getElementById("q2").value.trim().toLowerCase();
+        let a3 = document.getElementById("q3").value.trim().toLowerCase();
+        let score = 0;
+        if (a1 === "can") score++;
+        if (a2 === "should") score++;
+        if (a3 === "must") score++;
+        let msg = "";
+        if (score === 3) msg = "🔥 Perfect! You mastered modal verbs!";
+        else if (score === 2) msg = "⚡ Good job! Just one more to nail it.";
+        else msg = "🌱 Keep trying, you’ll get stronger!";
+        document.getElementById("result").textContent =
+          msg + " (Score: " + score + "/3)";
+      }
+    </script>
+  </body>
+</html>
